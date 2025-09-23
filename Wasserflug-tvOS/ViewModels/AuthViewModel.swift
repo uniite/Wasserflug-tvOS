@@ -25,6 +25,22 @@ class AuthViewModel: BaseViewModel, ObservableObject {
 	}
 	
 	func determineAuthenticationStatus() {
+		logger.info("=== Starting authentication check ===")
+		logger.info("FloatplaneAPIClient base path: \(FloatplaneAPIClientAPI.basePath)")
+		
+		// Log cookies before making requests
+		if let cookies = HTTPCookieStorage.shared.cookies {
+			let relevantCookies = cookies.filter {
+				$0.name.contains("sails") ||
+					$0.domain.contains("floatplane") ||
+					$0.domain.contains("sauceplus")
+			}
+			logger.info("Relevant cookies count: \(relevantCookies.count)")
+			for cookie in relevantCookies {
+				logger.info("Cookie: \(cookie.name)=\(cookie.value) domain=\(cookie.domain)")
+			}
+		}
+		
 		Task { @MainActor in
 			isLoadingAuthStatus = true
 			

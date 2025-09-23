@@ -32,7 +32,7 @@ class DeliveryHelper {
 			}
 		}
 		
-		return joinUrl(base: "https://www.floatplane.com", remainder: variant.url)
+		return joinUrl(base: "https://www.sauceplus.com", remainder: variant.url)
 	}
 	
 	private class func joinUrl(base: String, remainder: String) -> URL? {

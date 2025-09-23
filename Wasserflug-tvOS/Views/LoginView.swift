@@ -92,7 +92,7 @@ struct LoginView: View {
 			} else {
 				Text("""
 				Username or password is incorrect.
-				If you have forgotten your password, please reset it via https://www.floatplane.com/reset-password
+				If you have forgotten your password, please reset it via https://www.sauceplus.com/reset-password
 				""")
 			}
 		})

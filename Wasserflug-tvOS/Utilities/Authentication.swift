@@ -5,7 +5,7 @@ import Vapor
 extension FloatplaneAPIClientAPI {
 	
 	private static var FloatplaneURL = URL(string: "https://www.floatplane.com")!
-	private static var SailsSidCookieName = "sails.sid"
+	private static var SailsSidCookieName = "__Host-sp-sess"
 	
 	public static var rawCookieValue: String = ""
 	
@@ -20,10 +20,10 @@ extension FloatplaneAPIClientAPI {
 			// Cookies were previously stored for `www.floatplane.com` instead of `.floatplane.com`.
 			// On app startup/loading auth cookies, detect if this cookie is old and re-save it
 			// with the proper domain
-			if sailsSidCookie.domain == "www.floatplane.com" {
+			if sailsSidCookie.domain == "www.sauceplus.com" {
 				HTTPCookieStorage.shared.deleteCookie(sailsSidCookie)
 				let newSailsSidCookie = HTTPCookie(properties: [
-					.domain: ".floatplane.com",
+					.domain: ".sauceplus.com",
 					.path: "/",
 					.name: SailsSidCookieName,
 					.value: sailsSidCookie.value,

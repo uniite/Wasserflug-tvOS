@@ -32,13 +32,13 @@ class FPFrontendSocket: BaseViewModel, ObservableObject, FPSocket {
 	
 	init(sailsSid: String) {
 		socketManager = SocketManager(
-			socketURL: URL(string: "wss://www.floatplane.com")!,
+			socketURL: URL(string: "wss://www.sauceplus.com")!,
 			config: [
 				.log(false),
 				.compress,
 				.forceWebsockets(true),
 				.extraHeaders([
-					"Origin": "https://www.floatplane.com",
+					"Origin": "https://www.sauceplus.com",
 				]),
 				// Utilize system cookie manager for sails.sid cookie
 				.cookies([]),

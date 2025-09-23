@@ -102,6 +102,28 @@ struct ContentView: View {
 			}
 		}
 		.onAppear {
+			// Add this logging to see what the API client is configured with
+			print("=== API Configuration ===")
+			print("API Base Path: \(FloatplaneAPIClientAPI.basePath)")
+			
+			// Log cookie information
+			if let cookies = HTTPCookieStorage.shared.cookies {
+				print("=== Current Cookies ===")
+				for cookie in cookies {
+					if cookie.name.contains("sails") || cookie.domain.contains("floatplane") || cookie.domain.contains("sauceplus") {
+						print("Cookie: \(cookie.name)=\(cookie.value)")
+						print("  Domain: \(cookie.domain)")
+						print("  Path: \(cookie.path)")
+						print("  Secure: \(cookie.isSecure)")
+						print("  HttpOnly: \(cookie.isHTTPOnly)")
+					}
+				}
+			}
+			
+			// Log raw cookie value that the API client is using
+			print("FloatplaneAPIClient raw cookie value: \(FloatplaneAPIClientAPI.rawCookieValue ?? "nil")")
+			print("========================")
+			
 			viewModel.determineAuthenticationStatus()
 		}
 		.background(ZStack {

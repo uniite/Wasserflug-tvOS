@@ -11,6 +11,6 @@ import FoundationNetworking
 import Vapor
 
 open class FloatplaneAPIClientAPI {
-    public static var basePath = "https://www.floatplane.com"
+    public static var basePath = "https://www.sauceplus.com"
     public static var customHeaders: HTTPHeaders = [:]
 }
